@@ -1,0 +1,2 @@
+https://docs.opencv.org/4.5.3/da/d5c/tutorial_canny_detector.html
+https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_houghlines/py_houghlines.html#goal
