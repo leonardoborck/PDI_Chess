@@ -3,7 +3,8 @@ import cv2
 
 # Feito em 11/10/2021
 
-def encontrapecas(imgOriginal):
+def encontrarPecas(imgOriginal):
+
     # TRANSFORMA EM ESCALA DE CINZA
     imgCinza = cv2.cvtColor(imgOriginal, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(imgCinza, (7, 7), 0)
@@ -77,7 +78,7 @@ def encontrapecas(imgOriginal):
 
 # MAIN
 imgOriginal = cv2.imread("test/1B6-1k3B2-8-8-8-1N5p-K3b3-2Q1b3.jpeg")
-imgResultado = encontrapecas(imgOriginal)
+imgResultado = encontrarPecas(imgOriginal)
 cv2.imshow("Original", imgResultado)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
