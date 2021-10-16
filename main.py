@@ -6,8 +6,11 @@ ret,imagemThreshold = cv2.threshold(imagemCinza,90,255,cv2.THRESH_BINARY_INV)
 imgCanny = cv2.Canny(imagemThreshold, 0, 50, apertureSize=5)
 area = 0
 cont = 0
+
+#PEGA REGIAO CENTRAL DA CASA
 for i in range(15,imgCanny.shape[0],50):
     for j in range(15,imgCanny.shape[1],50):
+        #MAPEIA CANTO SUPERIOR ESQUERDO
         for aux_i in range(0,10):
                 for aux_j in range(0,10):
                     pixel = imgCanny[i+aux_i-13,j+aux_j-13]
@@ -19,6 +22,7 @@ for i in range(15,imgCanny.shape[0],50):
         media_canto_sup = cont/area
         cont = 0
         area = 0
+        #MAPEIA CANTO INFERIOR DIREITO
         for aux_i in range(0,10):
                 for aux_j in range(0,10):
                     pixel = imgCanny[i+aux_i+23,j+aux_j+23]
@@ -30,6 +34,7 @@ for i in range(15,imgCanny.shape[0],50):
         media_canto_inf = cont/area
         cont = 0
         area = 0
+        #MAPEIA REGIAO CENTRAL
         for aux_i in range(0,20):
             for aux_j in range(0,20):            
                 pixel = imgCanny[i+aux_i,j+aux_j]
@@ -38,6 +43,9 @@ for i in range(15,imgCanny.shape[0],50):
                 imagemOriginal[i+aux_i,j+aux_j][1] = 0
                 imagemOriginal[i+aux_i,j+aux_j][2] = 0
                 area+=1
+
+        #LOGICA DE COMPARAÇÃO
+        #=================================================================
         media_centro = cont/area
         #print("canto: ",media_canto," media centro: ",media_centro)
         cont = 0
@@ -45,6 +53,10 @@ for i in range(15,imgCanny.shape[0],50):
         media_cantos = (media_canto_sup + media_canto_inf)/2
         resultado = abs(abs(media_centro) - abs(media_cantos))
         print(media_centro,media_cantos,resultado)
+
+        #=================================================================
+        
+        #DESENHA NA TELA MASCARA VERMELHA
         if(resultado>40):
             for aux_i in range(0,50):
                 for aux_j in range(0,50):
