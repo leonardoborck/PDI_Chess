@@ -1,9 +1,18 @@
 import cv2
+
+#CARREGA IMAGEM
 imagemOriginal = cv2.imread("dataset/1b1b2K1-1r6-2P4p-1b1p4-4N1k1-3B2Q1-2q5-2N2q2.jpeg")
+#TRANSFORMA EM ESCALA DE CINZA
 imagemCinza = cv2.cvtColor(imagemOriginal, cv2.COLOR_BGR2GRAY)
 #blur = cv2.GaussianBlur(imagemCinza, (7, 7), 0)
+
+#BINARIZAÇÃO DA IMAGEM (PRETO E BRANCO)
 ret,imagemThreshold = cv2.threshold(imagemCinza,90,255,cv2.THRESH_BINARY_INV)
+
+#BORDAS DA IMAGEM
 imgCanny = cv2.Canny(imagemThreshold, 0, 50, apertureSize=5)
+
+
 area = 0
 cont = 0
 
@@ -53,14 +62,13 @@ for i in range(15,imgCanny.shape[0],50):
         media_cantos = (media_canto_sup + media_canto_inf)/2
         resultado = abs(abs(media_centro) - abs(media_cantos))
         print(media_centro,media_cantos,resultado)
-
-        #=================================================================
         
         #DESENHA NA TELA MASCARA VERMELHA
         if(resultado>40):
             for aux_i in range(0,50):
                 for aux_j in range(0,50):
                     imagemOriginal[i+aux_i-15,j+aux_j-15][2] = 255
+        #=================================================================
 
 cv2.imshow("Original",imagemOriginal)                
 cv2.imshow("Limiarizada",imgCanny)
