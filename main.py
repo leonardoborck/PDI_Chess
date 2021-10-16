@@ -78,7 +78,8 @@ def encontrarPecas(imgOriginal):
 
 # MAIN
 imgOriginal = cv2.imread("test/1B6-1k3B2-8-8-8-1N5p-K3b3-2Q1b3.jpeg")
+cv2.imshow("Original", imgOriginal)
 imgResultado = encontrarPecas(imgOriginal)
-cv2.imshow("Original", imgResultado)
+cv2.imshow("Resultado", imgResultado)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
