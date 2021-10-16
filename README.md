@@ -1,5 +1,7 @@
 # PDI_Chess
 <center>
+    <h4>Link do repositório utilizado:</h4>
+    <p>https://www.kaggle.com/koryakinp/chess-positions</p>
     <p>Algoritmo criado para disciplina de Processamento Digital da Imagens,
     o qual analisa imagens de tabuleiro de xadrez de um dataset que tem imagens
     de combinações de posições, estilos e identifica a posição no tabuleiro de cada
@@ -8,3 +10,4 @@
 </center>
 
 ![Exemplo](/img/exemplo.png)
+
