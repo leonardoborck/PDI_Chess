@@ -1,2 +1,2 @@
 # PDI_Chess
-@[Exemplo](/img/exemplo.png)
+![Exemplo](/img/exemplo.png)
