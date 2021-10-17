@@ -10,7 +10,7 @@ def encontrarPecas(imgOriginal):
     blur = cv2.GaussianBlur(imgCinza, (7, 7), 0)
 
     # BINARIZAÇÃO DA IMAGEM (PRETO E BRANCO)
-    ret, imgThreshold = cv2.threshold(blur, 90, 255, cv2.THRESH_OTSU)
+    otsu_threshold, imgThreshold = cv2.threshold(blur, 0, 255, cv2.THRESH_OTSU)
 
     # BORDAS DA IMAGEM
     imgCanny = cv2.Canny(imgThreshold, 0, 50, apertureSize=3)
